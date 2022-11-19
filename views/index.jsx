@@ -1,6 +1,6 @@
 
 const React = require('react')
-const Default = require('./layouts/default')
+const Default = require('./layouts/Default')
 
 
 
@@ -13,16 +13,16 @@ function Index ({breads,title})  {
         {/* This is a JSX comment. */}
         <ul>
         {
-          breads.map((bread, index)=> {
-          return (
-             <li key={index}>
-               <a href={`/breads/${index}`}>
-                 {bread.name}
-              </a>
-            </li>
-                )
-                })
-        }
+  breads.map((bread, index)=> {
+    return (
+      <li key={index}>
+        <a href={`/breads/${index}`}>
+          {bread.name}
+        </a>
+      </li>
+    )
+  })
+}
 
        </ul>
       </Default>
@@ -32,4 +32,3 @@ function Index ({breads,title})  {
     )
 }
 module.exports = Index
-
