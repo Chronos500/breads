@@ -26,6 +26,8 @@ breads.get('/new', (req, res) => {
 breads.get('/:id', (req, res) => {
   Bread.findById(req.params.id)
     .then(foundBread => {
+      const bakedBy = foundBread.getBakedBy() 
+        console.log(bakedBy)
       res.render('show', {
         bread: foundBread
       })
@@ -34,6 +36,7 @@ breads.get('/:id', (req, res) => {
       res.send('404: PAGE NOT FOUND')
     })
 })
+
 
 
 
@@ -86,7 +89,7 @@ breads.get('/:id/edit', (req, res) => {
     })
 })
 
-/*breads.get('/data/seed', (req, res) => {
+breads.get('/data/seed', (req, res) => {
   Bread.insertMany([[
     {
       name: 'Rye',
@@ -113,7 +116,7 @@ breads.get('/:id/edit', (req, res) => {
     .then(createdBreads => {
       res.redirect('/breads')
     })
-})*/
+})
 
 
 module.exports = breads
