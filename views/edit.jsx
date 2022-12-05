@@ -29,13 +29,12 @@ function Edit ({bread, index}) {
             defaultChecked={bread.hasGluten}
           />
           <label htmlFor="baker">Baker</label>
-<select name="baker" id="baker" defaultValue={bread.baker}>
-  <option value="Rachel">Rachel</option>
-  <option value="Monica">Monica</option>
-  <option value="Joey">Joey</option>
-  <option value="Chandler">Chandler</option>
-  <option value="Ross">Ross</option>
-  <option value="Phoebe">Phoebe</option>
+      <select name="baker" id="baker" defaultValue={bread.baker}>
+          {bakers.map((baker) => {
+              return(
+                  <option value={baker.id} key={baker.id}>{baker.name}</option>
+              )
+            })}
 </select>
 
           <br />
@@ -54,3 +53,21 @@ function Edit ({bread, index}) {
 
 
 module.exports = Edit
+
+
+
+
+function Edit ({bread, bakers}) {
+  return (
+      [...]
+      <label htmlFor="baker">Baker</label>
+      <select name="baker" id="baker" defaultValue={bread.baker}>
+          {bakers.map((baker) => {
+              return(
+                  <option value={baker.id} key={baker.id}>{baker.name}</option>
+              )
+        
+      </select>
+      [...]
+  )
+}

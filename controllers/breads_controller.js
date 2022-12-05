@@ -25,17 +25,17 @@ breads.get('/new', (req, res) => {
 // SHOW
 breads.get('/:id', (req, res) => {
   Bread.findById(req.params.id)
-    .then(foundBread => {
-      const bakedBy = foundBread.getBakedBy() 
-        console.log(bakedBy)
-      res.render('show', {
-        bread: foundBread
+      .populate('baker')
+      .then(foundBread => {
+        res.render('show', {
+            bread: foundBread
+        })
       })
-    })
-    .catch(err => {
-      res.send('404: PAGE NOT FOUND')
-    })
+      .catch(err => {
+        res.send('404')
+      })
 })
+
 
 
 
@@ -81,13 +81,18 @@ breads.put('/:id', (req, res) => {
 
 // EDIT
 breads.get('/:id/edit', (req, res) => {
-  Bread.findById(req.params.id) 
-    .then(foundBread => { 
-      res.render('edit', {
-        bread: foundBread 
-      })
+  Baker.find()
+    .then(foundBakers => {
+        Bread.findById(req.params.id)
+          .then(foundBread => {
+            res.render('edit', {
+                bread: foundBread, 
+                bakers: foundBakers 
+            })
+          })
     })
 })
+
 
 breads.get('/data/seed', (req, res) => {
   Bread.insertMany([[
