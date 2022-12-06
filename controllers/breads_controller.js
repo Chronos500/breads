@@ -1,6 +1,7 @@
 const express = require('express')
 const breads = express.Router()
 const Bread = require('../models/bread.js')
+const Baker = require('../models/baker.js')
 
 //get
 // INDEX
@@ -122,6 +123,19 @@ breads.get('/data/seed', (req, res) => {
       res.redirect('/breads')
     })
 })
+
+
+
+// in the new route
+breads.get('/new', (req, res) => {
+    Baker.find()
+        .then(foundBakers => {
+            res.render('new', {
+                bakers: foundBakers
+            })
+      })
+})
+
 
 
 module.exports = breads
