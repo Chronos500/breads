@@ -5,7 +5,7 @@ function Edit ({bread, bakers}) {
     return (
       <Default>
         <h2>Edit a bread</h2>
-        <form >
+        <form action={`/breads/${bread.id}?_method=PUT`} method="POST">
           <label htmlFor="name">Name</label>
           <input
             type="text"
@@ -37,15 +37,10 @@ function Edit ({bread, bakers}) {
             })}
       </select>
 
-          <br />
-          <input type="submit"/>
-
-          <form action={`/breads/${index}?_method=PUT`} method="POST"></form>
-        </form>
-
-       
-      </Default>
-      
+      <br />
+      <input type="submit"/>
+       </form>
+          </Default>
     )
 }
 
